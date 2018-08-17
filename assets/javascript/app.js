@@ -10,8 +10,9 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
+
 function rps(one, two) {
-    console.log(one, two);
     if (one === two) {
         database.ref("/outcome").set("It's a tie!");
     } else if (one === "rock") {
@@ -57,14 +58,11 @@ var player2choice;
 var turn = 1;
 var counter = 2;
 $(document).ready(function () {
-
+    
     database.ref("/outcome").on('value', function (snapshot) {
         var message = snapshot.val();
         $("#outcome").text(message);
     })
-
-
-
 
     $("#nameSubmit").on("click", function (event) {
         event.preventDefault();
